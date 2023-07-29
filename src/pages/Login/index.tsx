@@ -26,7 +26,7 @@ const Login = () => {
             />
             <DivMissingPassword>
               <span>Esqueceu a senha?</span>
-              <ButtonBlue width={"100%"} height={"40px"} top={"45px"}>
+              <ButtonBlue width={"100%"} height={"55px"} top={"45px"}>
                 Entrar
               </ButtonBlue>
             </DivMissingPassword>
