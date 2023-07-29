@@ -9,6 +9,7 @@ import {
 import { FiChevronLeft } from "react-icons/fi";
 import { useMediaQuery } from "react-responsive";
 import DesktopLayout from "../../components/DashDesktop";
+import CardTransaction from "../../components/Card";
 const Dashboard = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const isDesktopOrLaptop = useMediaQuery({
@@ -32,18 +33,13 @@ const Dashboard = () => {
             </SearchContainer>
           )}
           <SectionTitle>
-            <h2>Transações</h2>
+            <h2>Minhas Transações</h2>
           </SectionTitle>
-          {/* <MainContentDash>
-        <section>
-          <CardOneToOne />
-          <CardOneToOne />
-        </section>
-        <section>
-          <CardTalk />
-          <CardNotion />
-        </section>
-      </MainContentDash> */}
+          <MainContentDash>
+            <ul>
+              <CardTransaction />
+            </ul>
+          </MainContentDash>
         </>
       )}
     </>

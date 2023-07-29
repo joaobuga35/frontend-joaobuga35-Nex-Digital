@@ -9,6 +9,7 @@ import {
   IRegisterForm,
 } from "./interface";
 import api from "../../services/api";
+import jwt_decode from "jwt-decode";
 
 export const UserContext = createContext<IUserContextType>(
   {} as IUserContextType
@@ -17,6 +18,12 @@ export const UserContext = createContext<IUserContextType>(
 export const UserProvider = ({ children }: iContext) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("@TOKEN");
+  let decoded: any = "";
+  let name: string = "";
+  if (token) {
+    decoded = jwt_decode(token!);
+    name = decoded.name;
+  }
 
   const remove = () => {
     localStorage.removeItem("@TOKEN");
@@ -97,6 +104,7 @@ export const UserProvider = ({ children }: iContext) => {
         userLogin,
         token,
         remove,
+        name,
       }}
     >
       {children}

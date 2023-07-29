@@ -34,6 +34,7 @@ const SectionTitle = styled.section`
 `;
 
 const MainContentDash = styled.div`
+  margin-top: 50px;
   padding-left: 16px;
   padding-right: 16px;
 

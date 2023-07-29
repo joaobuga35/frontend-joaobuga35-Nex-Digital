@@ -22,6 +22,7 @@ interface IUserContextType {
   userRegister: (form: IRegisterForm) => Promise<void>;
   userLogin: (form: ILoginForm) => Promise<void>;
   token?: string | null;
+  name: string | null;
   remove: () => void;
 }
 
