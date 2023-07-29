@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import InputMain from "../../components/Input";
 import Logo from "../../components/Logo";
 import { ButtonBlue } from "../../styles/Button/buttons";
@@ -6,9 +6,8 @@ import { MainContent, FormColumn, CenteredButton } from "./styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { userData, userSchema } from "../../schemas/user.schema";
-import api from "../../services/api";
-import { toast } from "react-toastify";
-import { IRegisterForm } from "../../context/UserContext/interface";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const Register = () => {
   const {
@@ -20,39 +19,7 @@ const Register = () => {
     resolver: zodResolver(userSchema),
   });
 
-  const navigate = useNavigate();
-  const userRegister = async (form: IRegisterForm) => {
-    const load = toast.loading("Aguarde um instante...");
-    try {
-      await api.post("/users", form);
-      toast.update(load, {
-        render: "Cadastrado com sucesso!",
-        type: "success",
-        isLoading: false,
-        theme: "light",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      navigate("/");
-    } catch (error) {
-      toast.update(load, {
-        render: "Usuário já existente!",
-        type: "error",
-        isLoading: false,
-        theme: "light",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
+  const { userRegister } = useContext(UserContext);
 
   const submit = async (formData: userData) => {
     await userRegister(formData);

@@ -1,3 +1,4 @@
+import { UserProvider } from "./context/UserContext";
 import RoutesMain from "./routes";
 import Global from "./styles/Global";
 import { ToastContainer } from "react-toastify";
@@ -7,7 +8,9 @@ function App() {
     <>
       <ToastContainer />
       <Global />
-      <RoutesMain />
+      <UserProvider>
+        <RoutesMain />
+      </UserProvider>
     </>
   );
 }

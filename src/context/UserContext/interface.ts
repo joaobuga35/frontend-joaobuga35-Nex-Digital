@@ -19,6 +19,7 @@ interface ILoginForm {
 
 interface IUserContextType {
   navigate: NavigateFunction;
+  userRegister: (form: IRegisterForm) => Promise<void>;
   userLogin: (form: ILoginForm) => Promise<void>;
   token?: string | null;
   remove: () => void;

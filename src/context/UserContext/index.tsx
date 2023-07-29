@@ -2,7 +2,12 @@ import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { IUserContextType, iContext, ILoginForm } from "./interface";
+import {
+  IUserContextType,
+  iContext,
+  ILoginForm,
+  IRegisterForm,
+} from "./interface";
 import api from "../../services/api";
 
 export const UserContext = createContext<IUserContextType>(
@@ -51,10 +56,44 @@ export const UserProvider = ({ children }: iContext) => {
     }
   };
 
+  const userRegister = async (form: IRegisterForm) => {
+    const load = toast.loading("Aguarde um instante...");
+    try {
+      await api.post("/users", form);
+      toast.update(load, {
+        render: "Cadastrado com sucesso!",
+        type: "success",
+        isLoading: false,
+        theme: "light",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/");
+    } catch (error) {
+      toast.update(load, {
+        render: "Usuário já existente!",
+        type: "error",
+        isLoading: false,
+        theme: "light",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
         navigate,
+        userRegister,
         userLogin,
         token,
         remove,
