@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import InputMain from "../../components/Input";
 import Logo from "../../components/Logo";
 import { ButtonBlue } from "../../styles/Button/buttons";
@@ -25,7 +26,7 @@ const Login = () => {
               placeholder={"Insira sua senha"}
             />
             <DivMissingPassword>
-              <span>Esqueceu a senha?</span>
+              <Link to={"/register"}>Cadastre-se</Link>
               <ButtonBlue width={"100%"} height={"55px"} top={"45px"}>
                 Entrar
               </ButtonBlue>

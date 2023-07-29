@@ -65,6 +65,9 @@ export default createGlobalStyle`
   button:hover{
     filter: brightness(0.9);
   }
+  .errors{
+    color: var(--color-error);
+  }
 
   @keyframes smoothShow {
   0% {
