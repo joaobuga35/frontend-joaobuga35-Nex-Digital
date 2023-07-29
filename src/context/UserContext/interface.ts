@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NavigateFunction } from "react-router-dom";
 
 interface iContext {
@@ -24,6 +25,7 @@ interface IUserContextType {
   token?: string | null;
   name: string | null;
   remove: () => void;
+  decoded: any;
 }
 
 export type { ILoginForm, IRegisterForm, IUserContextType, iContext };

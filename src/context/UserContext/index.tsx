@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -11,11 +12,9 @@ import {
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 
-export const UserContext = createContext<IUserContextType>(
-  {} as IUserContextType
-);
+const UserContext = createContext<IUserContextType>({} as IUserContextType);
 
-export const UserProvider = ({ children }: iContext) => {
+const UserProvider = ({ children }: iContext) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("@TOKEN");
   let decoded: any = "";
@@ -27,6 +26,7 @@ export const UserProvider = ({ children }: iContext) => {
 
   const remove = () => {
     localStorage.removeItem("@TOKEN");
+    navigate("/");
   };
 
   const userLogin = async (form: ILoginForm) => {
@@ -105,9 +105,12 @@ export const UserProvider = ({ children }: iContext) => {
         token,
         remove,
         name,
+        decoded,
       }}
     >
       {children}
     </UserContext.Provider>
   );
 };
+
+export { UserProvider, UserContext };

@@ -1,3 +1,4 @@
+import { TransactionProvider } from "./context/TransactionContext";
 import { UserProvider } from "./context/UserContext";
 import RoutesMain from "./routes";
 import Global from "./styles/Global";
@@ -9,7 +10,9 @@ function App() {
       <ToastContainer />
       <Global />
       <UserProvider>
-        <RoutesMain />
+        <TransactionProvider>
+          <RoutesMain />
+        </TransactionProvider>
       </UserProvider>
     </>
   );

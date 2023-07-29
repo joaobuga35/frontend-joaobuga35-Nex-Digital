@@ -62,7 +62,7 @@ const SideBar = styled.aside`
 
     span {
       color: var(--gray-400);
-      font-size: 15px;
+      font-size: 20px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;

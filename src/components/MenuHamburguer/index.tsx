@@ -2,32 +2,31 @@ import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import { IPropsDisplay } from "./interface";
 import MenuSecret from "./styles";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import { TransactionContext } from "../../context/TransactionContext";
 
 const MenuHamburguer = ({ open, setOpen }: IPropsDisplay) => {
+  const { decoded } = useContext(UserContext);
+  const { sumTransactionsApprove } = useContext(TransactionContext);
+
   return (
     <MenuSecret isOpen={open}>
       <div>
         <Logo logoposition={"hamburguer"} />
         <span onClick={() => setOpen(false)}>X</span>
       </div>
-      {/* <ul>
+      <ul>
         <li>
-          <img src={oneToOne} alt="conversas 1:1" />
-          <span>Conversas 1:1</span>
+          <span>Olá, {decoded.name}</span>
         </li>
         <li>
-          <img src={task} alt="tasks" />
-          <span>Exemplo</span>
+          <span>
+            Seu saldo: R${" "}
+            <span className="money">{sumTransactionsApprove}</span>
+          </span>
         </li>
-        <li>
-          <img src={talk} alt="conversas gerais" />
-          <span>Exemplo</span>
-        </li>
-        <li>
-          <img src={config} alt="configurações" />
-          <span>Exemplo</span>
-        </li>
-      </ul> */}
+      </ul>
 
       <section>
         <Link to={"/"}>Sair</Link>

@@ -52,6 +52,12 @@ const MainContentDash = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 0px;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
   }
 `;
 

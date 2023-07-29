@@ -33,6 +33,9 @@ const MenuSecret = styled.nav<IDisplay>`
   z-index: 1;
   animation: ${fadeIn} 0.3s ease;
 
+  .money {
+    color: var(--color-success);
+  }
   div {
     display: flex;
     align-items: center;
