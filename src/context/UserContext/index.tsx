@@ -26,7 +26,7 @@ export const UserProvider = ({ children }: iContext) => {
     const load = toast.loading("Aguarde um instante...");
     try {
       const response = await api.post("login", form);
-      localStorage.setItem("@TOKEN", response.data.accessToken);
+      localStorage.setItem("@TOKEN", response.data.token);
       toast.update(load, {
         render: "Logado com sucesso!",
         type: "success",
